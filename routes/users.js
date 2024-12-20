@@ -4,7 +4,7 @@ var { ObjectId } = require("mongodb");
 
 var router = express.Router();
 
-/* GET users listing. */
+// GET Users 
 router.get("/getUser", async (req, res) => {
   try {
     let allUsers = await connection.collection("Users").find({}).toArray();
@@ -18,6 +18,7 @@ router.get("/getUser", async (req, res) => {
   }
 });
 
+//  Add Users
 router.post("/addUser", async (req, res) => {
   let newUser = req.body;
   try {
@@ -32,6 +33,7 @@ router.post("/addUser", async (req, res) => {
   }
 });
 
+// Delete Users
 router.delete("/deleteUser/:id", async (req, res) => {
   let id = req.params.id;
   try {
@@ -48,6 +50,7 @@ router.delete("/deleteUser/:id", async (req, res) => {
   }
 });
 
+// Update Users
 router.put("/editUser", async (req, res) => {
   let data = req.body;
   console.log(data.id)
