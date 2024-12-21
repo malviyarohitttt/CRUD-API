@@ -40,7 +40,7 @@ class userController {
     }
     async editUser(data,callback){
         try {
-            let isUpdated = await connection.collection("Users").updateOne({ "_id":new ObjectId(data._id)},{$set:{'name':data.name, 'email':data.email, 'mobileNumber':data.mobileNumber,'age':data.age}});
+            let isUpdated = await connection.collection("Users").updateOne({ "_id":new ObjectId(data.id)},{$set:{'name':data.name, 'email':data.email, 'mobileNumber':data.mobileNumber,'age':data.age}});
             console.log(isUpdated)
             if (isUpdated.modifiedCount > 0 && isUpdated.acknowledged) {
               callback({ status: true, msg: "User Updated" });

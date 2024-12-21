@@ -30,6 +30,7 @@ router.delete("/deleteUser/:id", (req, res) => {
 // Update Users
 router.put("/editUser", (req, res) => {
   let data = req.body;
+  console.log(data)
   userController.editUser(data,(result)=>{
     res.status(200).json(result)
   })
