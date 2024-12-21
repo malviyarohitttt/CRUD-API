@@ -1,21 +1,15 @@
 var express = require("express");
 var connection = require("../model/dbConfig");
 var { ObjectId } = require("mongodb");
+const userController = require('../controller/users.controller')
 
 var router = express.Router();
 
 // GET Users 
 router.get("/getUser", async (req, res) => {
-  try {
-    let allUsers = await connection.collection("Users").find({}).toArray();
-    if (allUsers) {
-      res.status(200).json({ status: true, data: allUsers });
-    } else {
-      res.status(200).json({ status: false, msg: "Could Users" });
-    }
-  } catch (error) {
-    res.status(200).json({ status: false, error: error.message });
-  }
+  userController.getUser((result)=>{
+    res.status(200).json(result)
+  })
 });
 
 //  Add Users
