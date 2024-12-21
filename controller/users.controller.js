@@ -1,4 +1,5 @@
 const connection = require('../model/dbConfig')
+var { ObjectId } = require("mongodb");
 
 class userController {
     async getUser(callback){
