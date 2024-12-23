@@ -1,11 +1,12 @@
 const express = require("express");
+require('dotenv').config();
 const mongoose = require("mongoose");
-const MongoUrl =
-  "mongodb+srv://malviyarohitttt:malviyarohitttt123%40%23@cluster0.dzx0s6y.mongodb.net/Crud-Api?retryWrites=true&w=majority";
+let MongoUrl = process.env.MONGO_URL;
 
-mongoose.connect(MongoUrl,)
+mongoose
+  .connect(MongoUrl,)
   .then(() => {
-    console.log("Connected to Mongo Server!");
+    console.log("Connected to MongoDB Server!");
   })
   .catch((err) => {
     console.log(err);
